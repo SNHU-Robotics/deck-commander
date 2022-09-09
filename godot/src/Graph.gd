@@ -3,6 +3,9 @@ extends Node2D
 # This array holds all the data for our graph
 var graphPoints = PoolVector2Array([Vector2(0,0), Vector2(15,1), Vector2(30,4), Vector2(45, 17), Vector2(60, -1)])
 
+# Throttle
+var throttle = 0
+
 # Some constants
 var updatespeed = 1 # How many pixels we shift on every frame
 var graphWidth = 300
@@ -26,8 +29,11 @@ func _process(_delta):
 		if p.x < -graphWidth/2 + 25:
 			graphPoints.remove(graphPoints.find(p)) # Seek and destroy!
 	
+	# Messy but it updates the throttle
+	throttle = (Input.get_action_strength("ch_throttle_up") - Input.get_action_strength("ch_throttle_dn")) * -50
+	
 	# Refine but, this adds data
-	graphPoints.append(Vector2((graphWidth / 2) - 80, Input.get_action_strength("ch_throttle") * -50))
+	graphPoints.append(Vector2((graphWidth / 2) - 80, throttle))
 	
 	# Redraw every time (optimize later?)
 	update()
