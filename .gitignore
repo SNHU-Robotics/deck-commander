@@ -13,3 +13,6 @@ data_*/
 # Art and temp media
 *.*~
 *-autosave*
+
+# Build and script
+_build

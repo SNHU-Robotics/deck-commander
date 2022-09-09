@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=2]
+[gd_scene load_steps=13 format=2]
 
 [ext_resource path="res://assets/Days.ttf" type="DynamicFontData" id=1]
 [ext_resource path="res://src/OSTScript.gd" type="Script" id=2]
@@ -13,6 +13,9 @@
 
 [sub_resource type="DynamicFont" id=1]
 size = 100
+font_data = ExtResource( 1 )
+
+[sub_resource type="DynamicFont" id=2]
 font_data = ExtResource( 1 )
 
 [node name="Game" type="Node"]
@@ -55,6 +58,16 @@ texture = ExtResource( 8 )
 [node name="RadioRXSprite" type="Sprite" parent="RobotRadio"]
 visible = false
 texture = ExtResource( 10 )
+
+[node name="RichTextLabel" type="RichTextLabel" parent="RobotRadio"]
+margin_left = -93.0
+margin_top = -155.0
+margin_right = 99.0
+margin_bottom = -76.0
+custom_fonts/normal_font = SubResource( 2 )
+bbcode_enabled = true
+bbcode_text = "WAIT FOR ROBOT..."
+text = "No robot connection..."
 
 [node name="RadioTXSprite" type="Sprite" parent="RobotRadio"]
 visible = false
