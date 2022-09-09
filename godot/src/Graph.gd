@@ -1,15 +1,28 @@
 extends Node2D
 
-var from = Vector2(0,0)
-var to = Vector2(75,0)
-var col = Color(255,0,0)
+# This array holds all the data for our graph
+var graphArray = [Vector2()]
+
+# Some constants
+var updatespeed = 2 # How many pixels we shift on every frame
+var graphColor = Color(255,0,0)
 
 
 func _ready():
+	graphArray.append(Vector2(0, 0))
+	graphArray.append(Vector2(15, 1))
+	graphArray.append(Vector2(30, 4))
+	graphArray.append(Vector2(45, 17))
+	graphArray.append(Vector2(60, -1))
 	_draw()
 	
 
 func _draw():
-	draw_line(from, to, col)
-	from += Vector2(0, 50)
-	to += Vector2(0,50)
+	draw_polyline(graphArray, graphColor, 2)
+
+func _process(_delta):
+	for dp in graphArray:
+		dp += Vector2(-1,0)
+	
+	# Redraw every time
+	update()

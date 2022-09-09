@@ -19,13 +19,16 @@ custom_fonts/normal_font = SubResource( 1 )
 script = ExtResource( 2 )
 
 [node name="Graph" type="Node2D" parent="."]
-position = Vector2( 200, 500 )
+position = Vector2( 151, 724 )
+z_index = 1
 script = ExtResource( 5 )
 
 [node name="GraphForegroundSprite" type="Sprite" parent="Graph"]
+z_index = 1
 texture = ExtResource( 4 )
 
-[node name="GraphCanvasLayer" type="CanvasLayer" parent="Graph"]
+[node name="GraphLines" type="Node2D" parent="Graph"]
 
 [node name="GraphBackgroundSprite" type="Sprite" parent="Graph"]
+z_index = -1
 texture = ExtResource( 3 )
