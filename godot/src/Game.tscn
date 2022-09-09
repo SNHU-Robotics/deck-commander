@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://assets/Days.ttf" type="DynamicFontData" id=1]
 [ext_resource path="res://src/OSTScript.gd" type="Script" id=2]
@@ -6,6 +6,10 @@
 [ext_resource path="res://assets/GraphForeground.png" type="Texture" id=4]
 [ext_resource path="res://src/Graph.gd" type="Script" id=5]
 [ext_resource path="res://assets/RobotVisionBackground.png" type="Texture" id=6]
+[ext_resource path="res://assets/RadioForeground.png" type="Texture" id=7]
+[ext_resource path="res://assets/RadioBackground.png" type="Texture" id=8]
+[ext_resource path="res://assets/RadioTX.png" type="Texture" id=9]
+[ext_resource path="res://assets/RadioRX.png" type="Texture" id=10]
 
 [sub_resource type="DynamicFont" id=1]
 size = 100
@@ -38,3 +42,20 @@ texture = ExtResource( 3 )
 [node name="RobotVisionBackground" type="Sprite" parent="."]
 position = Vector2( 648, 386 )
 texture = ExtResource( 6 )
+
+[node name="RobotRadio" type="Node2D" parent="."]
+position = Vector2( 1128, 300 )
+
+[node name="RadioForegroundSprite" type="Sprite" parent="RobotRadio"]
+texture = ExtResource( 7 )
+
+[node name="RadioBackgroundSprite" type="Sprite" parent="RobotRadio"]
+texture = ExtResource( 8 )
+
+[node name="RadioRXSprite" type="Sprite" parent="RobotRadio"]
+visible = false
+texture = ExtResource( 10 )
+
+[node name="RadioTXSprite" type="Sprite" parent="RobotRadio"]
+visible = false
+texture = ExtResource( 9 )
