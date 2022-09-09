@@ -6,23 +6,28 @@ var graphPoints = PoolVector2Array([Vector2(0,0), Vector2(15,1), Vector2(30,4), 
 # Some constants
 var updatespeed = 1 # How many pixels we shift on every frame
 var graphWidth = 300
-var graphColor = Color(255,0,0)
-
+var graphColor = Color(0,0,0)
 
 func _ready():
 	pass
 
 # Called whenever we want to redraw the graph (dont call manually)
 func _draw():
-	draw_polyline(graphPoints, graphColor, 2)
+	draw_polyline(graphPoints, graphColor, 4)
 
 # Called regularly
 func _process(_delta):
+	# Move every element
 	for i in range(len(graphPoints)):
 		graphPoints[i] = graphPoints[i] + Vector2(-updatespeed,0)
+		
+	# Remove anything too old
+	for p in graphPoints:
+		if p.x < -graphWidth/2 + 25:
+			graphPoints.remove(graphPoints.find(p)) # Seek and destroy!
 	
 	# Refine but, this adds data
-	graphPoints.append(Vector2((graphWidth / 2) - 50, Input.get_action_strength("ch_throttle") * -50))
+	graphPoints.append(Vector2((graphWidth / 2) - 80, Input.get_action_strength("ch_throttle") * -50))
 	
 	# Redraw every time (optimize later?)
 	update()
